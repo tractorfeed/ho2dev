@@ -1,26 +1,58 @@
-GIT
-  remote: https://github.com/arunagw/omniauth-twitter.git
-  revision: efa0dc10728ec41dd2297b10441146615caa4807
-  specs:
-    omniauth-twitter (0.0.13)
-      multi_json (~> 1.3)
-      omniauth-oauth (~> 1.0)
-
-GIT
-  remote: https://github.com/mkdynamic/omniauth-facebook.git
-  revision: b7150215fba0280285fc6d40bbba169302463d2c
-  specs:
-    omniauth-facebook (1.4.1)
-      omniauth-oauth2 (~> 1.1)
-
 GEM
   remote: http://rubygems.org/
   specs:
-    addressable (2.3.2)
+    addressable (2.2.8)
+    bcrypt-ruby (3.0.1)
+    data_mapper (1.2.0)
+      dm-aggregates (~> 1.2.0)
+      dm-constraints (~> 1.2.0)
+      dm-core (~> 1.2.0)
+      dm-migrations (~> 1.2.0)
+      dm-serializer (~> 1.2.0)
+      dm-timestamps (~> 1.2.0)
+      dm-transactions (~> 1.2.0)
+      dm-types (~> 1.2.0)
+      dm-validations (~> 1.2.0)
+    data_objects (0.10.10)
+      addressable (~> 2.1)
+    dm-aggregates (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-constraints (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-core (1.2.0)
+      addressable (~> 2.2.6)
+    dm-do-adapter (1.2.0)
+      data_objects (~> 0.10.6)
+      dm-core (~> 1.2.0)
+    dm-migrations (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-postgres-adapter (1.2.0)
+      dm-do-adapter (~> 1.2.0)
+      do_postgres (~> 0.10.6)
+    dm-serializer (1.2.2)
+      dm-core (~> 1.2.0)
+      fastercsv (~> 1.5)
+      json (~> 1.6)
+      json_pure (~> 1.6)
+      multi_json (~> 1.0)
+    dm-timestamps (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-transactions (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-types (1.2.2)
+      bcrypt-ruby (~> 3.0)
+      dm-core (~> 1.2.0)
+      fastercsv (~> 1.5)
+      json (~> 1.6)
+      multi_json (~> 1.0)
+      stringex (~> 1.4)
+      uuidtools (~> 2.1)
+    dm-validations (1.2.0)
+      dm-core (~> 1.2.0)
+    do_postgres (0.10.10)
+      data_objects (= 0.10.10)
     excon (0.16.4)
-    faraday (0.8.4)
-      multipart-post (~> 1.1)
-    hashie (1.2.0)
+    fastercsv (1.5.5)
     heroku (2.32.11)
       heroku-api (~> 0.3.5)
       launchy (>= 0.3.2)
@@ -29,32 +61,14 @@ GEM
       rubyzip
     heroku-api (0.3.5)
       excon (~> 0.16.1)
-    httpauth (0.2.0)
-    jwt (0.1.5)
-      multi_json (>= 1.0)
+    json (1.7.5)
+    json_pure (1.7.5)
     kgio (2.7.4)
-    launchy (2.1.2)
-      addressable (~> 2.3)
+    launchy (2.1.0)
+      addressable (~> 2.2.6)
     mime-types (1.19)
     multi_json (1.3.6)
-    multipart-post (1.1.5)
     netrc (0.7.7)
-    oauth (0.4.7)
-    oauth2 (0.8.0)
-      faraday (~> 0.8)
-      httpauth (~> 0.1)
-      jwt (~> 0.1.4)
-      multi_json (~> 1.0)
-      rack (~> 1.2)
-    omniauth (1.1.1)
-      hashie (~> 1.2)
-      rack
-    omniauth-oauth (1.0.1)
-      oauth
-      omniauth (~> 1.0)
-    omniauth-oauth2 (1.1.1)
-      oauth2 (~> 0.8.0)
-      omniauth (~> 1.0)
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
@@ -66,18 +80,20 @@ GEM
       rack (~> 1.3, >= 1.3.6)
       rack-protection (~> 1.2)
       tilt (~> 1.3, >= 1.3.3)
+    stringex (1.4.0)
     tilt (1.3.3)
     unicorn (4.4.0)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uuidtools (2.1.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  data_mapper
+  dm-postgres-adapter
   heroku
-  omniauth-facebook!
-  omniauth-twitter!
   sinatra
   unicorn

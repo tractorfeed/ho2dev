@@ -64,6 +64,5 @@ class Permit
   belongs_to :permit_actions
   belongs_to :neighborhood
 end
-
 DataMapper.finalize
 DataMapper.auto_upgrade!
