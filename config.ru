@@ -1,12 +1,4 @@
-require 'bundler/setup'
-require 'sinatra/base'
+require './environment'
+require './permitmapping'
 
-use Rack::Session::Cookie
-
-class App < Sinatra::Base
-	get '/' do
-		erb :index
-	end
-end
-
-run App.new
+run PermitMapping.new
