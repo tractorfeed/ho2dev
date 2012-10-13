@@ -1,6 +1,6 @@
 use Rack::Session::Cookie
 
-class App < Sinatra::Base
+class PermitMapping < Sinatra::Base
         get '/' do
                 erb :index
         end
