@@ -82,7 +82,7 @@ require 'json'
 	end
 
 	get '/api/permits/summary' do
-		result = Array.new
+		hoods = Array.new
 		neighborhoods = Neighborhood.all
 		
 		neighborhoods.each do |neighborhood|
@@ -90,8 +90,8 @@ require 'json'
 			hood['name'] = neighborhood['name']
 			hood['id'] = neighborhood['id']
 			hood['census_data'] = neighborhood
-			hood['new_permits'] = Hash.new
-			
+			hood['new_permits'] = Permit.count(:neighborhood => neighborhood)
+		
 #			[2011, 2012].each do |year|
 #				[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].each do |month|
 #					month_key = Date::ABBR_MONTHNAMES[month] + year.to_s
@@ -108,14 +108,24 @@ require 'json'
 #				end
 #			end
 			
-			result.push(hood)
+			hoods.push(hood)
+		end
+		result = []
+		weight = 1
+		hoods = hoods.sort_by { |hsh| hsh[:new_permits]}
+		loop do
+			group = hoods.pop([15, hoods.length].max)
+			group.each do |hood|
+				hood[:relative_growth] = weight
+				result.push(hood)
+			end
+			weight += 1
+			if(hoods.length == 0)
+				break
+			end
 		end
 		
 		return result.to_json
-	end
-
-	get '/api/permits/summary/:neighborhood_id' do
-
 	end
 
 	get '/api/neighborhoods' do
