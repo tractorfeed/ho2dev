@@ -8,10 +8,7 @@ ROOT = File.expand_path(File.dirname(__FILE__))
 #DataMapper::Logger.new($stdout, :debug)
 
 # A Sqlite3 connection to a persistent database
-#DataMapper.setup(:default, "sqlite:///#{ROOT}/data/permits.db")
-#DataMapper.setup(:default, 'postgres://postgres:postgres@192.168.2.165/omaha-building-permits')
-DataMapper.setup(:default, 'postgres://postgres:idontcare@elysium.pretendamazing.org/omaha-building-permits')
-#DataMapper.setup(:default, "sqlite:///tmp/permits.db")
+DataMapper.setup(:default, 'postgres://permitmapping:tUTZhhMLL2R94Z8RoC5Jh465J@elysium.pretendamazing.org/omaha-building-permits')
 
 require 'open-uri'
 require 'uri'
