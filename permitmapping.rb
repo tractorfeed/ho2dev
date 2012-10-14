@@ -112,7 +112,7 @@ require 'json'
 		end
 		result = []
 		weight = 1
-		hoods = hoods.sort_by { |hsh| hsh[:new_permits]}
+		hoods = hoods.sort_by { |hsh| hsh['new_permits']}
 		loop do
 			group = hoods.pop([15, hoods.length].max)
 			group.each do |hood|
