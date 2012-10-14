@@ -1,3 +1,6 @@
+require 'date'
+require 'json'
+
 	get '/' do
 		erb :index
 	end
@@ -79,7 +82,36 @@
 	end
 
 	get '/api/permits/summary' do
-
+		result = Array.new
+		neighborhoods = Neighborhood.all
+		
+		neighborhoods.each do |neighborhood|
+			hood = Hash.new
+			hood['name'] = neighborhood['name']
+			hood['id'] = neighborhood['id']
+			hood['census_data'] = neighborhood
+			hood['new_permits'] = Hash.new
+			
+#			[2011, 2012].each do |year|
+#				[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].each do |month|
+#					month_key = Date::ABBR_MONTHNAMES[month] + year.to_s
+#					month_conditions = Hash.new
+#					
+#					# Set the start/end dates for the month
+#					month_start_date = Date.new(year, month, 1)
+#					month_end_date = Date.new(year, month, days_in_month(month, year))
+#					month_conditions[:date.gte] = month_start_date
+#					month_conditions[:date.lte] = month_end_date
+#					
+#					month_value = Permit.count(:conditions => month_conditions)
+#					hood['new_permits'][month_key] = month_value
+#				end
+#			end
+			
+			result.push(hood)
+		end
+		
+		return result.to_json
 	end
 
 	get '/api/permits/summary/:neighborhood_id' do
